@@ -11,7 +11,7 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
-          <PrivateRoute path="/info" component={InfoCards} />
+          <PrivateRoute path="/infocards" component={InfoCards} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
         </Switch>

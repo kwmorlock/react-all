@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const InfoCards = (props) => {
-  const [info, setInfo] = useState([]);
+  const [information, setInfo] = useState([]);
   const [searchTag, setSearchTag] = useState("");
 
   const changeHandler = (e) => {
@@ -15,14 +15,14 @@ const InfoCards = (props) => {
       .get(`/api/info/`)
       .then((res) => {
         setInfo(
-          res.data.filter((info) => {
+          res.data.filter((information) => {
             if (searchTag === "") {
-              return info;
+              return information;
             } else if (
-              info.title.toLowerCase().includes(searchTag.toLowerCase()) ||
-              info.tags.toLowerCase().includes(searchTag.toLowerCase())
+                information.title.toLowerCase().includes(searchTag.toLowerCase()) ||
+                information.tags.toLowerCase().includes(searchTag.toLowerCase())
             ) {
-              return info;
+              return information;
             } else {
               return null;
             }
@@ -47,12 +47,12 @@ const InfoCards = (props) => {
         </div>
 
         <div>
-          {info.map((info) => (
-            <div key={info.id}>
-              <div key={info.id}>
-                <p>Title: {info.title}</p>
-                <p>Description: {info.description}</p>
-                <p>Tags: {info.tags}</p>
+          {information.map((information) => (
+            <div key={information.id}>
+              <div key={information.id}>
+                <p>Title: {information.title}</p>
+                <p>Description: {information.description}</p>
+                <p>Tags: {information.tags}</p>
               </div>
             </div>
           ))}
